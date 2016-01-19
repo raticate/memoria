@@ -1,0 +1,142 @@
+\documentclass[12pt,letterpaper]{article}
+\input{config.sty}
+\input{funcion.tex}
+
+\usepackage[spanish]{babel}
+\usepackage{dsfont}
+\usepackage{hyperref}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{todonotes}
+\usepackage{enumitem}
+%\usepackage{chapterbib}\sectionbib{\section}{section}
+
+%\usepackage[procnames]{listings}
+\usepackage{color}
+\usepackage{listings}
+\definecolor{keywords}{RGB}{255,0,90}
+%\definecolor{blue}{rgb}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{rgb}{0,.50,0}
+
+\lstdefinelanguage{Scala}{
+  morekeywords={abstract,case,catch,class,def,%
+    do,else,extends,false,final,finally,%
+    for,if,implicit,import,match,mixin,%
+    new,null,object,override,package,%
+    private,protected,requires,return,sealed,%
+    super,this,throw,trait,true,try,%
+    type,val,var,while,with,yield},
+  otherkeywords={=>,<-,<\%,<:,>:,\#,@},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[n]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  morestring=[b]"""
+}
+
+\lstset{language=Scala, 
+        basicstyle=\ttfamily\scriptsize, 
+        keywordstyle=\color{keywords},
+        commentstyle=\color{green},
+        stringstyle=\color{red},
+        showstringspaces=false,
+        identifierstyle=\color{blue}}
+
+% "define" Scala
+
+        
+%\pagestyle{fancy}
+%\fancyhead[l]{\sf{\large{Informe Práctica I}}} %% Titulo superior Izquierdo.
+%\fancyhead[r]{\thepage} %% numero de pagina Derecha.
+%\fancyfoot{}
+%\renewcommand{\headrulewidth}{0.6pt}
+\begin{document}
+\singlespacing
+%% PORTADA %%
+\begin{titlepage}
+%% Encabezado %%
+	\encabezado{pictures/uchile.png}{.3}{Universidad de Chile}{Facultad de Ciencias Físicas y Matemáticas}{Departamento de Ciencias de la Computación}{}
+%% Titulo %%
+
+
+	\titulo{CC6908: Introducción al Trabajo de Título}{Implementación de un algoritmo distribuido de generación de llaves RSA}
+	\vspace{2cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% the following lines set up the signature area of the title page  
+  \begin{tabbing}
+  \mbox{\hspace{95mm}}\= \kill
+
+  \hspace{10mm}  \rule{60mm}{.1mm}            \>        \rule{60mm}{.1mm}\\
+    \hspace{26mm}Profesor Guía               	\>        \hspace{14mm}Profesor Co-Guía \\[.6in]
+  \hspace{53mm}  \rule{60mm}{.1mm}         \\
+  \hspace{67mm}  Alumno Memorista         \\
+
+  \end{tabbing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Datos %%
+%	\vspace{2cm}
+	\datos{Javier Bustos}{Alejandro Hevia}{Caterina Muñoz}{Ingeniería Civil en Computación}{18.025.979-1}{caterina@niclabs.cl}{+56984799379}{\today}
+\end{titlepage}
+
+\newpage
+%% Tabla de contenidos
+\spacing{0.75}
+\tableofcontents
+\newpage
+\doublespacing
+
+\section{Introducción}
+
+
+\section{Motivación}
+
+%Dada la necesidad de optimizar la implementación de los descriptores se eligió restringirse al sistema Android . 
+\section{Marco Teórico}
+\subsection{Criptografía Asimétrica}
+\subsection{Criptografía Umbral}
+\subsection{Llaves RSA}
+
+\section{Objetivos}
+\subsection{Objetivo general}
+El objetivo principal de esta memoria es implementar el algoritmo de generación distribuida de llaves RSA propuesto en \cite{bonehfranklin01}. La razón de la elección de este algoritmo es \todo[inline]{explicar por qué este y no otro} Además, se debe evaluar la implementación de una o más de las optimizaciones propuestas en \cite{bonehfranklin01, fouquestern01} \todo[inline]{buscar otros papers con más optimizaciones}y se deben realizar pruebas para comprobar el correcto funcionamiento del algoritmo implementado.
+
+
+\subsection{Objetivos específicos}
+Para conseguir el objetivo principal de la memoria se pueden detallar varios objetivos específicos expuestos a continuación.
+
+\section{Algoritmo Propuesto}
+A continuación se explica el algoritmo propuesto por Boneh y Franklin en \cite{bonehfranklin01}.
+Dado que este algoritmo tiene como objetivo la generación distribuida de llaves RSA, al final de su ejecución se debe tener:
+\begin{itemize}
+\item Un módulo RSA $N = p \cdot q$, donde $p$ y $q$ son primos primos de al menos $n$ bits.
+\item Un par de llaves público - privada $e, d$, donde $e \cdot d = 1 \mod \varphi(N)$.
+\item $N$ y $e$ son públicos
+\item y $d$ está repartido entre los $k$ nodos.
+\end{itemize}
+%%
+El algoritmo sigue los siguientes pasos:
+\begin{enumerate}[label=\textbf{\arabic*})]
+\item \textbf{Elección de Candidatos}
+Cada uno de los $k$ nodos elige dos números aleatorios de $n$ bits: $q_i$ y $p_i$ que mantiene en secreto. 
+\item \textbf{Computación de $N$ usando BGW}
+Usando una versioń simplificada del método BGW \todo{falta cita, falta explicación de BGW}, los nodos calculan $N = (p_1 + p_2 + \ldots + p_k)\cdot(q_1 + q_2 + \ldots + q_k)$. Al final de este paso, $N$ es público.
+\item \textbf{Test de Primalidad}
+Los nodos ocupan un test de primalidad distribuido para determinar si $N$ es el producto de dos primos. 
+\item \textbf{Generación de $d$}
+
+\item \textbf{Repartición de $d$}
+\end{enumerate}
+
+\section{Diseño del sistema}
+
+\section{Trabajo Realizado}
+
+
+\section{Plan de trabajo}
+
+
+\bibliographystyle{plain}
+\bibliography{Informe} 
+
+\end{document}

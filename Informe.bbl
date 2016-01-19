@@ -1,0 +1,18 @@
+\begin{thebibliography}{1}
+
+\bibitem{bonehfranklin01}
+Dan Boneh and Matthew Franklin.
+\newblock Efficient generation of shared rsa keys.
+\newblock {\em Journal of the ACM (JACM)}, 48(4):702--722, July 2001.
+
+\bibitem{fouquestern01}
+Pierre-Alain Fouque and Jaques Stern.
+\newblock Fully distributed threshold rsa under standard assumptions.
+\newblock In {\em ASIACRYPT}, 2001.
+
+\bibitem{malkinwuboneh99}
+Michael Malkin, Thomas Wu, and Dan Boneh.
+\newblock Experimenting with shared rsa generation of rsa keys.
+\newblock In {\em Proc. NDSS}, 1999.
+
+\end{thebibliography}

@@ -1,0 +1,59 @@
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{fancyhdr}
+\usepackage{wrapfig}
+\usepackage{multicol}
+\usepackage{latexsym}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{setspace}
+\usepackage[right=2cm,left=2cm,top=2.5cm,bottom=2cm,headsep=0cm,footskip=0.5cm]{geometry}
+%\renewcommand{\baselinestretch}{1.5} % Controla el interlineado el numero indica el factor de aumento
+
+\setlength{\parskip}{\baselineskip} 
+%Redefinimos el campo caption como Code
+\renewcommand{\lstlistingname}{Código}
+%Definir colores:
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray45}{gray}{.45}
+%Presentacion del codigo
+\lstset{
+	 captionpos=b % Ubicación del Caption 
+	 %
+	 %Define la apariencia de la caja que contiene el codigo
+	 frame=Ltb,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     %
+     %Define los colores a usar      
+     showstringspaces = false,
+     basicstyle=\small\ttfamily,
+	 keywordstyle=\bfseries\color{green!40!black},
+  	 commentstyle=\itshape\color{purple!40!black},
+  	 identifierstyle=\color{blue},
+  	 stringstyle=\color{orange},     
+     %commentstyle=\color{gray45},
+	 %stringstyle=\ttfamily\color{mymauve},
+	 %commentstyle=\color{purple!40!black},
+     %keywordstyle=\bfseries\color{blue},
+     tabsize=2,%numeros de espacios igual al tab
+     %
+     numbers=left,
+     numbersep=15pt,
+     numberstyle=\scriptsize,
+     numberfirstline = false,
+     breaklines=true,     
+     }
