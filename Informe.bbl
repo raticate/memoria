@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{BGW}
+M.~Ben-Or, S.~Goldwasser, and A.~Wigderson.
+\newblock Completeness theorems for non-cryptographic fault tolerant
+  distributed computation.
+\newblock In {\em Proc. STOC}, 1988.
+
 \bibitem{bonehfranklin01}
 Dan Boneh and Matthew Franklin.
 \newblock Efficient generation of shared rsa keys.
@@ -9,10 +15,5 @@ Dan Boneh and Matthew Franklin.
 Pierre-Alain Fouque and Jaques Stern.
 \newblock Fully distributed threshold rsa under standard assumptions.
 \newblock In {\em ASIACRYPT}, 2001.
-
-\bibitem{malkinwuboneh99}
-Michael Malkin, Thomas Wu, and Dan Boneh.
-\newblock Experimenting with shared rsa generation of rsa keys.
-\newblock In {\em Proc. NDSS}, 1999.
 
 \end{thebibliography}

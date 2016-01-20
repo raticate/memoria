@@ -113,19 +113,25 @@ Dado que este algoritmo tiene como objetivo la generación distribuida de llaves
 \item Un par de llaves público - privada $e, d$, donde $e \cdot d = 1 \mod \varphi(N)$.
 \item $N$ y $e$ son públicos
 \item y $d$ está repartido entre los $k$ nodos.
+\todo[inline]{falta explicar t}
 \end{itemize}
 %%
 El algoritmo sigue los siguientes pasos:
 \begin{enumerate}[label=\textbf{\arabic*})]
 \item \textbf{Elección de Candidatos}
+\\
 Cada uno de los $k$ nodos elige dos números aleatorios de $n$ bits: $q_i$ y $p_i$ que mantiene en secreto. 
 \item \textbf{Computación de $N$ usando BGW}
-Usando una versioń simplificada del método BGW \todo{falta cita, falta explicación de BGW}, los nodos calculan $N = (p_1 + p_2 + \ldots + p_k)\cdot(q_1 + q_2 + \ldots + q_k)$. Al final de este paso, $N$ es público.
+\\
+Usando una versioń simplificada del método BGW \cite{BGW}, los nodos calculan $N = (p_1 + p_2 + \ldots + p_k)\cdot(q_1 + q_2 + \ldots + q_k)$. Al final de este paso, $N$ es público.
 \item \textbf{Test de Primalidad}
-Los nodos ocupan un test de primalidad distribuido para determinar si $N$ es el producto de dos primos. 
-\item \textbf{Generación de $d$}
-
+\\
+Los nodos ocupan un test de primalidad distribuido para determinar si $N$ es el producto de dos primos. En el caso de que no lo sea, el algoritmo vuelve a empezar.  
+\item \textbf{Generación de $d$} 
+\\Luego de obtener $N$, los nodos deben computar partes aditivas $d_i$ tal que $\sum_{i=1}^k d_i = d$. Así, al final de este paso, cada nodo queda con una parte $d_i$ de $d$. 
 \item \textbf{Repartición de $d$}
+\\
+Que cada nodo tenga una de las partes $d_i$ generadas en el paso anterior no es suficiente para realizar criptografía umbral. Esto, porque se quiere poder realizar una operación criptográfica con un subconjunto cualquiera de $t$ nodos. Para lograr esto, cada $d_i$ se debe repartir de manera redundante entre los $k$ nodos de manera tal que un subconjunto cualquiera de $t$ nodos pueda ``reconstruir'' el $d_i$ en cuestión. Con esto, se logra que mismo efecto para $d$.  
 \end{enumerate}
 
 \section{Diseño del sistema}
